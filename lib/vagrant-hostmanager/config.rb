@@ -49,18 +49,18 @@ module VagrantPlugins
         # check if aliases option is an Array
         if  !machine.config.hostmanager.aliases.kind_of?(Array) &&
             !machine.config.hostmanager.aliases.kind_of?(String)
-          errors << I18n.t('vagrant_hostmanager.config.not_an_array_or_string', {
+          errors << I18n.t('vagrant_hostmanager.config.not_an_array_or_string',
             :config_key => 'hostmanager.aliases',
             :is_class   => aliases.class.to_s,
-          })
+          )
         end
 
         if !machine.config.hostmanager.ip_resolver.nil? &&
            !machine.config.hostmanager.ip_resolver.kind_of?(Proc)
-          errors << I18n.t('vagrant_hostmanager.config.not_a_proc', {
+          errors << I18n.t('vagrant_hostmanager.config.not_a_proc',
             :config_key => 'hostmanager.ip_resolver',
             :is_class   => ip_resolver.class.to_s,
-          })
+          )
         end
 
         errors.compact!
@@ -72,10 +72,10 @@ module VagrantPlugins
       def validate_bool(key, value)
         if ![TrueClass, FalseClass].include?(value.class) &&
            value != UNSET_VALUE
-          I18n.t('vagrant_hostmanager.config.not_a_bool', {
+          I18n.t('vagrant_hostmanager.config.not_a_bool',
             :config_key => key,
             :value      => value.class.to_s
-          })
+          )
         else
           nil
         end
